@@ -1,9 +1,9 @@
 em-cometio-client
 =================
-sinatra-cometio client for eventmachine
+[Sinatra CometIO](https://github.com/shokai/em-cometio-client) client for eventmachine
 
 * https://github.com/shokai/em-cometio-client
-* https://github.com/shokai/sinatra-cometio
+
 
 Installation
 ------------
@@ -45,7 +45,7 @@ CometIO.push :foo {:message => 'foobar'}
 Sample
 ------
 
-start chat server
+start [chat server](https://github.com/shokai/em-cometio-client)
 
     % git clone git://github.com/shokai/cometio-chat-sample.git
     % cd cometio-chat-sample

@@ -1,4 +1,3 @@
-# -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'em-cometio-client/version'
@@ -8,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.version       = EventMachine::CometIO::Client::VERSION
   gem.authors       = ["Sho Hashimoto"]
   gem.email         = ["hashimoto@shokai.org"]
-  gem.description   = %q{sinatra-cometio client for eventmachine}
+  gem.description   = %q{Sinatra CometIO client for eventmachine}
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/shokai/em-cometio-client"
 
