@@ -14,7 +14,6 @@ Installation
 Usage
 -----
 
-EM::CometIO::Client usage
 ```ruby
 require 'eventmachine'
 require 'em-cometio-client'
@@ -26,26 +25,28 @@ EM::run do
     puts "connect!! (sessin_id:#{session})"
   end
 
-  client.on :foo do |data|
-    puts data['message']  # => foobar
-  end
-
   client.on :error do |err|
     STDERR.puts err
+  end
+
+  ## regist receive "chat" event
+  client.on :chat do |data|
+    puts "#{data['name']} - #{data['message']}"
+  end
+
+  ## push "chat" event to Server
+  EM::defer do
+    loop do
+      client.push :chat, {:message => Time.now.to_s, :name => 'clock'}
+    end
   end
 end
 ```
 
-Sinatra Side
-```ruby
-CometIO.push :foo {:message => 'foobar'}
-```
-
-
 Sample
 ------
 
-start [chat server](https://github.com/shokai/em-cometio-client)
+start [chat server](https://github.com/shokai/cometio-chat-sample)
 
     % git clone git://github.com/shokai/cometio-chat-sample.git
     % cd cometio-chat-sample
