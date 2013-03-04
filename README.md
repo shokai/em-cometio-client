@@ -57,7 +57,7 @@ start [chat server](https://github.com/shokai/em-cometio-client)
 
 sample chat client
 
-    % ruby sample/em_cui_chat_client.rb
+    % ruby sample/cui_chat_client.rb
 
 
 Contributing
