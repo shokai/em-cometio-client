@@ -61,6 +61,16 @@ sample chat client
     % ruby sample/cui_chat_client.rb
 
 
+Test
+----
+
+    % gem install bundler
+    % bundle install
+    % export PORT=5000
+    % export PID_FILE=/tmp/em-cometio-client-testapp.pid
+    % rake test
+
+
 Contributing
 ------------
 1. Fork it
