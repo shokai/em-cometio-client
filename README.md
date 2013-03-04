@@ -35,10 +35,8 @@ EM::run do
   end
 
   ## push "chat" event to Server
-  EM::defer do
-    loop do
-      client.push :chat, {:message => Time.now.to_s, :name => 'clock'}
-    end
+  EM::add_periodic_timer 10 do
+    client.push :chat, {:message => Time.now.to_s, :name => 'clock'}
   end
 end
 ```
