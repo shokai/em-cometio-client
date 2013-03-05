@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    em-cometio-client (0.0.2)
+    em-cometio-client (0.0.3)
       em-http-request
       event_emitter (>= 0.2.0)
       eventmachine
