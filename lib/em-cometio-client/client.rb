@@ -3,12 +3,14 @@ module EventMachine
     class Client
       include EventEmitter
       attr_reader :url, :session
+      attr_accessor :timeout
 
       def initialize(url)
         raise ArgumentError, "invalid URL (#{url})" unless url.kind_of? String and url =~ /^https?:\/\/.+/
         @url = url
         @session = nil
         @running = false
+        @timeout = 120
       end
 
       def push(type, data)
@@ -40,7 +42,7 @@ module EventMachine
 
       private
       def get
-        http = EM::HttpRequest.new("#{@url}?session=#{@session}", :connect_timeout => 120).get
+        http = EM::HttpRequest.new("#{@url}?session=#{@session}", :connect_timeout => @timeout).get
         http.callback do |res|
           begin
             data = JSON.parse res.response
