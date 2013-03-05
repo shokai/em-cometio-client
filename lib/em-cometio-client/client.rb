@@ -13,7 +13,7 @@ module EventMachine
 
       def push(type, data)
         that = self
-        http = EM::HttpRequest.new(@url, :connect_timeout => 60000).
+        http = EM::HttpRequest.new(@url, :connect_timeout => 10).
           post(:body => {:type => type, :data => data, :session => @session})
         http.callback do |res|
         end
@@ -40,12 +40,13 @@ module EventMachine
 
       private
       def get
-        http = EM::HttpRequest.new("#{@url}?session=#{@session}", :connect_timeout => 60000).get
+        http = EM::HttpRequest.new("#{@url}?session=#{@session}", :connect_timeout => 120).get
         http.callback do |res|
           begin
             data = JSON.parse res.response
             self.emit data['type'], data['data']
-          rescue
+          rescue JSON::ParserError
+          rescue StandardError
             self.emit :error, "CometIO get error"
             sleep 10
           end
