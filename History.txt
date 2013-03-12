@@ -1,12 +1,16 @@
-=== 0.0.3 2013-3-5
+=== 0.0.4 2013-03-12
+
+* parse multiple data on get
+
+=== 0.0.3 2013-03-05
 
 * modify default timeout
 * add timeout property
 
-=== 0.0.2 2013-3-4
+=== 0.0.2 2013-03-04
 
 * add test
 
-=== 0.0.1 2013-3-4
+=== 0.0.1 2013-03-04
 
 * EM::CometIO::Client
