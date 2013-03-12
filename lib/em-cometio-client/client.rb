@@ -45,8 +45,11 @@ module EventMachine
         http = EM::HttpRequest.new("#{@url}?session=#{@session}", :connect_timeout => @timeout).get
         http.callback do |res|
           begin
-            data = JSON.parse res.response
-            self.emit data['type'], data['data']
+            data_arr = JSON.parse res.response
+            data_arr = [data_arr] unless data_arr.kind_of? Array
+            data_arr.each do |data|
+              self.emit data['type'], data['data']
+            end
           rescue JSON::ParserError
           rescue StandardError
             self.emit :error, "CometIO get error"
