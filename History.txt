@@ -1,3 +1,7 @@
+=== 0.0.5 2013-03-16
+
+* fix test
+
 === 0.0.4 2013-03-12
 
 * parse multiple data on get
