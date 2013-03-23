@@ -21,6 +21,8 @@ require 'em-cometio-client'
 EM::run do
   client = EM::CometIO::Client.new('http://localhost:5000/cometio/io').connect
 
+  client.timeout = 120  # comet-get timeout
+
   client.on :connect do |session|
     puts "connect!! (sessin_id:#{session})"
   end
