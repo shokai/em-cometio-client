@@ -1,6 +1,6 @@
 em-cometio-client
 =================
-[Sinatra CometIO](https://github.com/shokai/em-cometio-client) Client for eventmachine
+[Sinatra CometIO](https://github.com/shokai/sinatra-cometio) Client for eventmachine
 
 * https://github.com/shokai/em-cometio-client
 
