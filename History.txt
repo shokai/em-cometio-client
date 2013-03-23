@@ -1,3 +1,8 @@
+=== 0.0.6 2013-03-24
+
+* fix README
+* use gem.add_development_dependency in gemspec
+
 === 0.0.5 2013-03-16
 
 * fix test
