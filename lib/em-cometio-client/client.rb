@@ -58,8 +58,6 @@ module EventMachine
           get
         end
         http.errback do |err|
-          self.emit :error, "CometIO get error"
-          sleep 10
           get
         end
       end

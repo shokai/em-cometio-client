@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
-require 'rubygems'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'rubygems'
 require 'em-cometio-client'
 
 name = `whoami`.strip || 'shokai'
+url = ARGV.shift || 'http://localhost:5000/cometio/io'
 
 EM::run do
-  client = EM::CometIO::Client.new('http://localhost:5000/cometio/io').connect
+  client = EM::CometIO::Client.new(url).connect
 
   client.on :connect do |session|
     puts "connect!! (sessin_id:#{session})"
