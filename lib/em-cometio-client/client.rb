@@ -15,8 +15,9 @@ module EventMachine
 
       def push(type, data)
         that = self
+        post_data = {:session => @session, :events => [:type => type, :data => data]}
         http = EM::HttpRequest.new(@url, :connect_timeout => 10).
-          post(:body => {:type => type, :data => data, :session => @session})
+          post(:body => post_data)
         http.callback do |res|
         end
         http.errback do |err|
