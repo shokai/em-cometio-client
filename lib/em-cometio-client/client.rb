@@ -11,18 +11,34 @@ module EventMachine
         @session = nil
         @running = false
         @timeout = 120
+        @post_queue = []
+        EM::add_periodic_timer 1 do
+          flush
+        end
       end
 
-      def push(type, data)
+      private
+      def flush
+        return if !@running or @post_queue.size < 1
+        post_data = {:session => @session, :events => @post_queue}
         that = self
-        post_data = {:session => @session, :events => [:type => type, :data => data]}
         http = EM::HttpRequest.new(@url, :connect_timeout => 10).
           post(:body => post_data)
+        @post_queue = []
         http.callback do |res|
         end
         http.errback do |err|
           self.emit :error, "CometIO push error"
         end
+      end
+
+      public
+      def push(type, data)
+        if !@running or !@session
+          emit :error, "CometIO not connected"
+          return
+        end
+        @post_queue.push :type => type, :data => data
       end
 
       def connect
