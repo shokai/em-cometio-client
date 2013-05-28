@@ -20,11 +20,11 @@ module EventMachine
       private
       def flush
         return if !@running or @post_queue.size < 1
-        post_data = {:session => @session, :events => @post_queue}
+        post_data = {:json => {:session => @session, :events => @post_queue}.to_json}
+        @post_queue = []
         that = self
         http = EM::HttpRequest.new(@url, :connect_timeout => 10).
           post(:body => post_data)
-        @post_queue = []
         http.callback do |res|
         end
         http.errback do |err|
