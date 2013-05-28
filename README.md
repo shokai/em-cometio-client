@@ -66,9 +66,14 @@ Test
 
     % gem install bundler
     % bundle install
-    % export PORT=5000
-    % export PID_FILE=/tmp/em-cometio-client-testapp.pid
-    % rake test
+
+start server
+
+    % bundle exec rake test_server
+
+test
+
+    % bundle exec rake test
 
 
 Contributing

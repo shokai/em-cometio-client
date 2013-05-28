@@ -1,14 +1,6 @@
 require File.expand_path 'test_helper', File.dirname(__FILE__)
 
-class TestEmCometioClient < MiniTest::Unit::TestCase
-
-  def setup
-    App.start
-  end
-
-  def teardown
-    App.stop
-  end
+class TestEmCometioClient < MiniTest::Test
 
   def test_simple
     post_data = {:time => Time.now.to_s, :msg => 'hello!!'}
